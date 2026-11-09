@@ -30,7 +30,7 @@ Status values: `todo` · `doing` · `done` · `parked`
 |---|---|---|---|
 | 0 | Setup | done | `uv run` works, API key in `.env`, `.env` ignored by git |
 | 1 | Call Gemini once | done | Reply, `finish_reason` and token counts printed |
-| 2 | Keep a conversation going | todo | Multi-turn chat in the terminal; type `exit` to quit |
+| 2 | Keep a conversation going | done | Multi-turn chat in the terminal; type `exit` to quit |
 | 3 | Add one tool | todo | Ask "what time is it?" → model asks for the tool → my code runs it → answer |
 | 4 | Agent loop | todo | Loop runs tools until the model stops asking for one; hard cap of 10 tool calls |
 | 5 | File-reading tool | todo | Agent reads files only inside one safe folder; errors handled |
@@ -63,10 +63,10 @@ Raguram runs these himself (Claude Code only explains):
 - [x] Experiment: ask a follow-up in a second run → see it has no memory
 
 ### Step 2 — Conversation
-- [ ] Understand: model is stateless; history = a list of message dicts I resend
-- [ ] `while` loop reading `input()`, appending user + assistant messages
-- [ ] Add a system prompt
-- [ ] Print token usage per turn → see cost grow as history grows
+- [x] Understand: model is stateless; history = a list of `types.Content` messages I resend
+- [x] `while` loop reading `input()`, appending user + model messages
+- [x] Add a system prompt
+- [x] Print token usage per turn → see cost grow as history grows
 
 ### Step 3 — One tool
 - [ ] Understand: tool definition (name, description, JSON Schema), `function_call` / `function_response` parts
@@ -77,7 +77,7 @@ Raguram runs these himself (Claude Code only explains):
 - [ ] Understand: the agent loop, why it needs a cap
 - [ ] Loop until the response has no `function_call`; max 10 tool calls; clean error if cap hit
 - [ ] Second tool (e.g. `calculate`) → see the model choose between tools
-- [ ] Split code from `__init__.py` into modules inside `src/python_ai_agent/` (structure decided and approved at this step)
+- [ ] Organise the modules inside `src/python_ai_agent/` (structure decided and approved at this step)
 
 ### Step 5 — File-reading tool
 - [ ] Tools `list_files`, `read_file` restricted to one safe folder (path traversal blocked)

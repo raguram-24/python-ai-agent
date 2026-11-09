@@ -53,6 +53,10 @@ HTTP, REST, JSON, loops, error handling, env vars/secrets, Git, Docker, testing 
 | `Integer.parseInt(s)` | `int(s)` | Raises `ValueError` if not a number |
 | `list.get(0)` | `my_list[0]` | |
 | Builder: `.model(m).contents(c)` | Keyword arguments: `model=m, contents=c` | Order doesn't matter; trailing comma allowed |
+| `scanner.nextLine()` | `input("You: ")` | Returns a `str` |
+| `s.trim().toLowerCase()` | `s.strip().lower()` | |
+| `private static final String X = ...;` | `X = ...` (UPPER_CASE) | Constant by convention only, not enforced |
+| `x != null ? x : 0` | `x or 0` | None-safe default |
 | `String name = "Ram";` | `name = "Ram"` | No type needed (type hints optional: `name: str = "Ram"`) |
 | `List<String>` | `list[str]` | `["a", "b"]` |
 | `Map<String, Object>` | `dict` | `{"role": "user", "content": "hi"}` |
