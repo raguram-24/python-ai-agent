@@ -28,8 +28,8 @@ Status values: `todo` · `doing` · `done` · `parked`
 
 | # | Step | Status | Done when |
 |---|---|---|---|
-| 0 | Setup | doing | `uv run` works, API key in `.env`, `.env` ignored by git |
-| 1 | Call Gemini once | todo | Reply, `finish_reason` and token counts printed |
+| 0 | Setup | done | `uv run` works, API key in `.env`, `.env` ignored by git |
+| 1 | Call Gemini once | done | Reply, `finish_reason` and token counts printed |
 | 2 | Keep a conversation going | todo | Multi-turn chat in the terminal; type `exit` to quit |
 | 3 | Add one tool | todo | Ask "what time is it?" → model asks for the tool → my code runs it → answer |
 | 4 | Agent loop | todo | Loop runs tools until the model stops asking for one; hard cap of 10 tool calls |
@@ -54,13 +54,13 @@ Raguram runs these himself (Claude Code only explains):
 - [x] Add `.env` to `.gitignore`, then check with `git status` that `.env` is NOT listed
 - [x] `uv add google-genai` (Gemini SDK); `anthropic` kept for later
 - [x] VS Code: "Python: Select Interpreter" → `.venv`
-- [ ] First commit: `chore(step-00): project setup`
+- [x] First commit: `feat(step-00): project setup` (82e4743), pushed to github.com/raguram-24/python-ai-agent
 
 ### Step 1 — Call Gemini once
-- [ ] Understand: client, `generate_content`, roles (`user` / `model`), `max_output_tokens`, response object (verify names in Google's SDK docs)
-- [ ] Write the code in `src/python_ai_agent/__init__.py` (run with `uv run python-ai-agent`): load `.env`, create client, send one message, print text + `stop_reason` + `usage`
-- [ ] Experiment: `max_output_tokens=20` → see `finish_reason = MAX_TOKENS`
-- [ ] Experiment: ask a follow-up in a second run → see it has no memory
+- [x] Understand: client, `generate_content`, roles (`user` / `model`), `max_output_tokens`, response object (verify names in Google's SDK docs)
+- [x] Write the code in `src/python_ai_agent/__init__.py` (run with `uv run python-ai-agent`): load `.env`, create client, send one message, print text + `finish_reason` + token counts
+- [x] Experiment: `max_output_tokens=20` → see `finish_reason = MAX_TOKENS` (used 50 via `GEMINI_MAX_OUTPUT_TOKENS`)
+- [x] Experiment: ask a follow-up in a second run → see it has no memory
 
 ### Step 2 — Conversation
 - [ ] Understand: model is stateless; history = a list of message dicts I resend
@@ -101,3 +101,5 @@ Raguram runs these himself (Claude Code only explains):
 - First specialist agent: Money assistant (everyday use, links to Expense Tracker) **or** Unit-test agent (Java/Spring Boot).
 - Local model via Ollama behind an `LLMClient` interface (privacy option).
 - Agent suite with an orchestrator (final goal).
+- Try Gemini Interactions API (`client.interactions.create`) after building the loop by hand.
+- Add a request timeout (`types.HttpOptions(timeout=30_000)`) — `gemini-3.8-flash` hung >1 min in Step 1. Do before the Step 4 loop at the latest.

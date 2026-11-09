@@ -32,7 +32,11 @@
 
 ## 2. Git branches
 
-`step-NN-short-description` → `step-01-first-call`, `step-03-time-tool`
+`<type>/step-NN-short-description` → `feat/step-01-first-call`, `feat/step-03-time-tool`, `fix/step-03-tool-timeout`
+
+- `<type>` = same types as commits: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`
+- `step-NN` = the step from `docs/TASKS.md` (acts like a ticket ID)
+- short description = lowercase words joined with `-`
 
 ## 3. Commit messages
 
