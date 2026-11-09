@@ -47,6 +47,12 @@ HTTP, REST, JSON, loops, error handling, env vars/secrets, Git, Docker, testing 
 | `~/.m2` (shared, many versions) | `.venv/` (per project) | One version per package, so each project gets its own folder. Never commit `.venv/` |
 | Resolved versions / lock | `uv.lock` | Exact versions. Commit it |
 | `mvn install` / `npm ci` | `uv sync` | Install everything from the lock file |
+| `application-local.properties` (ignored) | `.env` (ignored) | Real secrets, loaded with `python-dotenv` |
+| `application.properties` with `CHANGE_ME` | `.env.example` | Committed template, placeholders only |
+| `mvn exec:java` + main class | `uv run <script>` + `[project.scripts]` | |
+| `Integer.parseInt(s)` | `int(s)` | Raises `ValueError` if not a number |
+| `list.get(0)` | `my_list[0]` | |
+| Builder: `.model(m).contents(c)` | Keyword arguments: `model=m, contents=c` | Order doesn't matter; trailing comma allowed |
 | `String name = "Ram";` | `name = "Ram"` | No type needed (type hints optional: `name: str = "Ram"`) |
 | `List<String>` | `list[str]` | `["a", "b"]` |
 | `Map<String, Object>` | `dict` | `{"role": "user", "content": "hi"}` |
