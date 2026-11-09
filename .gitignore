@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# env file
+.env
+
+# Claude Code personal settings (machine-specific)
+.claude/settings.local.json
+
+# Personal logs (kept local, not public)
+docs/DEV_LOG.md
+docs/LEARNING_LOG.md

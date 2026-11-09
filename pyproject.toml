@@ -1,0 +1,21 @@
+[project]
+name = "python-ai-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Raguram", email = "ram.ragu2404@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "anthropic>=2.6.0",
+    "google-genai>=3.0.0",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+python-ai-agent = "python_ai_agent:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
