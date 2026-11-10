@@ -67,6 +67,9 @@ HTTP, REST, JSON, loops, error handling, env vars/secrets, Git, Docker, testing 
 | `@Annotation` | `@decorator` | Similar look, different mechanism |
 | JUnit | `pytest` | |
 | `this` | `self` | Written explicitly as the first method parameter |
+| `Map<String, String>` / `Map.of(...)` | `dict[str, str]` / `{"a": x}` | Dicts map naturally to JSON |
+| `list != null && !list.isEmpty()` | `if items:` | Truthiness: `None`, `[]`, `""`, `0` are false |
+| `/** Javadoc */` | `"""docstring"""` | First string inside a function |
 
 ## Learning resources (to verify / add as I go)
 

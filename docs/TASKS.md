@@ -31,7 +31,7 @@ Status values: `todo` · `doing` · `done` · `parked`
 | 0 | Setup | done | `uv run` works, API key in `.env`, `.env` ignored by git |
 | 1 | Call Gemini once | done | Reply, `finish_reason` and token counts printed |
 | 2 | Keep a conversation going | done | Multi-turn chat in the terminal; type `exit` to quit |
-| 3 | Add one tool | todo | Ask "what time is it?" → model asks for the tool → my code runs it → answer |
+| 3 | Add one tool | done | Ask "what time is it?" → model asks for the tool → my code runs it → answer |
 | 4 | Agent loop | todo | Loop runs tools until the model stops asking for one; hard cap of 10 tool calls |
 | 5 | File-reading tool | todo | Agent reads files only inside one safe folder; errors handled |
 | 6 | MCP server | todo | Second Brain exposed as an MCP server and used by the agent |
@@ -69,9 +69,9 @@ Raguram runs these himself (Claude Code only explains):
 - [x] Print token usage per turn → see cost grow as history grows
 
 ### Step 3 — One tool
-- [ ] Understand: tool definition (name, description, JSON Schema), `function_call` / `function_response` parts
-- [ ] Tool `get_current_time` (use the `add-agent-tool` skill)
-- [ ] Handle a `function_call` in the response once
+- [x] Understand: tool definition (name, description, JSON Schema), `function_call` / `function_response` parts
+- [x] Tool `get_current_time` (use the `add-agent-tool` skill)
+- [x] Handle a `function_call` in the response once — tool returns time + weekday
 
 ### Step 4 — Agent loop
 - [ ] Understand: the agent loop, why it needs a cap
@@ -103,3 +103,4 @@ Raguram runs these himself (Claude Code only explains):
 - Agent suite with an orchestrator (final goal).
 - Try Gemini Interactions API (`client.interactions.create`) after building the loop by hand.
 - Add a request timeout (`types.HttpOptions(timeout=30_000)`) — `gemini-3.8-flash` hung >1 min in Step 1. Do before the Step 4 loop at the latest.
+- Add Ruff as a dev dependency (`uv add --dev ruff`) if we set up CI — for now Ruff runs only via the VS Code extension.
