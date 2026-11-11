@@ -4,7 +4,7 @@ Project: **Python AI Agent** (learning project) · Owner: Raguram · Created: 20
 
 ## The big picture
 
-We build **one AI agent**, step by step, in Python, using the Claude API.
+We build **one AI agent**, step by step, in Python, using the Gemini API (free tier).
 Each step adds one idea. By Step 4 it is a real agent (model + tools + loop).
 After that we grow it (files, MCP, memory, evals), then build **specialist agents one by one**, and finally an **orchestrator** that ties them into a suite.
 
@@ -32,7 +32,7 @@ Status values: `todo` · `doing` · `done` · `parked`
 | 1 | Call Gemini once | done | Reply, `finish_reason` and token counts printed |
 | 2 | Keep a conversation going | done | Multi-turn chat in the terminal; type `exit` to quit |
 | 3 | Add one tool | done | Ask "what time is it?" → model asks for the tool → my code runs it → answer |
-| 4 | Agent loop | todo | Loop runs tools until the model stops asking for one; hard cap of 10 tool calls |
+| 4 | Agent loop | done | Loop runs tools until the model stops asking for one; hard cap of 10 tool calls |
 | 5 | File-reading tool | todo | Agent reads files only inside one safe folder; errors handled |
 | 6 | MCP server | todo | Second Brain exposed as an MCP server and used by the agent |
 | 7 | Memory / RAG | todo | Agent answers questions from vault notes it retrieved |
@@ -74,10 +74,10 @@ Raguram runs these himself (Claude Code only explains):
 - [x] Handle a `function_call` in the response once — tool returns time + weekday
 
 ### Step 4 — Agent loop
-- [ ] Understand: the agent loop, why it needs a cap
-- [ ] Loop until the response has no `function_call`; max 10 tool calls; clean error if cap hit
-- [ ] Second tool (e.g. `calculate`) → see the model choose between tools
-- [ ] Organise the modules inside `src/python_ai_agent/` (structure decided and approved at this step)
+- [x] Understand: the agent loop, why it needs a cap
+- [x] Loop until the response has no `function_call`; max 10 tool calls; clean error if cap hit
+- [x] Second tool (e.g. `calculate`) → see the model choose between tools
+- [x] Organise the modules inside `src/python_ai_agent/` — `chat.py` (terminal), `agent.py` (loop), `tools/` (registry + one `*_tool.py` per tool)
 
 ### Step 5 — File-reading tool
 - [ ] Tools `list_files`, `read_file` restricted to one safe folder (path traversal blocked)
@@ -102,5 +102,4 @@ Raguram runs these himself (Claude Code only explains):
 - Local model via Ollama behind an `LLMClient` interface (privacy option).
 - Agent suite with an orchestrator (final goal).
 - Try Gemini Interactions API (`client.interactions.create`) after building the loop by hand.
-- Add a request timeout (`types.HttpOptions(timeout=30_000)`) — `gemini-3.8-flash` hung >1 min in Step 1. Do before the Step 4 loop at the latest.
 - Add Ruff as a dev dependency (`uv add --dev ruff`) if we set up CI — for now Ruff runs only via the VS Code extension.
