@@ -580,6 +580,7 @@ source = { editable = "." }
 dependencies = [
     { name = "anthropic" },
     { name = "google-genai" },
+    { name = "httpx2" },
     { name = "python-dotenv" },
 ]
 
@@ -587,6 +588,7 @@ dependencies = [
 requires-dist = [
     { name = "anthropic", specifier = ">=2.6.0" },
     { name = "google-genai", specifier = ">=3.0.0" },
+    { name = "httpx2", specifier = ">=2.16.0" },
     { name = "python-dotenv", specifier = ">=1.2.4" },
 ]
 
